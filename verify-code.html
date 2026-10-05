@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verifikasi Kode — 20FIT</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="login-container">
+    <div class="login-card">
+      <div class="logo">
+        <img src="assets/img/20fit-logo.png" alt="20FIT">
+      </div>
+      <a href="forgot-password.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+        Kembali
+      </a>
+      <h1 class="title">Masukkan kode verifikasi</h1>
+      <p class="subtitle">Kode 6 digit telah dikirim ke <b id="targetEmail">email kamu</b>.</p>
+      <form id="verifyCodeForm">
+        <div class="form-group">
+          <label>Kode verifikasi</label>
+          <div class="otp-group">
+            <input class="otp-input" maxlength="1" inputmode="numeric" data-i="0">
+            <input class="otp-input" maxlength="1" inputmode="numeric" data-i="1">
+            <input class="otp-input" maxlength="1" inputmode="numeric" data-i="2">
+            <input class="otp-input" maxlength="1" inputmode="numeric" data-i="3">
+            <input class="otp-input" maxlength="1" inputmode="numeric" data-i="4">
+            <input class="otp-input" maxlength="1" inputmode="numeric" data-i="5">
+          </div>
+          <div class="error-msg" id="code-err">Kode salah atau sudah kedaluwarsa</div>
+        </div>
+        <div class="resend-row">
+          Tidak menerima kode? <button type="button" id="resendBtn" disabled>Kirim ulang (<span id="resendTimer">30</span>s)</button>
+        </div>
+        <button type="submit" class="btn" style="margin-top:14px;">Verifikasi</button>
+      </form>
+      <p id="message"></p>
+    </div>
+  </main>
+  <script type="module" src="./js/verify-code.js"></script>
+</body>
+</html>

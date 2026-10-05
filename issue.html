@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fasilitas / Kerusakan</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main class="dashboard-container">
+    <div class="dashboard-card checklist-card">
+      <h1>🔧 Fasilitas / Kerusakan</h1>
+      <p>
+        Laporkan fasilitas atau barang yang mengalami kerusakan
+      </p>
+      <!-- AREA -->
+      <div class="form-group">
+        <label for="area">
+          📍 Area
+        </label>
+        <select id="area">
+          <option value="">
+            Pilih area
+          </option>
+          <option value="Area Depan">
+            Area Depan
+          </option>
+          <option value="Lobby">
+            Lobby
+          </option>
+          <option value="Studio">
+            Studio
+          </option>
+          <option value="Toilet">
+            Toilet
+          </option>
+          <option value="Area Belakang">
+            Area Belakang
+          </option>
+          <option value="Lainnya">
+            Lainnya
+          </option>
+        </select>
+      </div>
+      <!-- FASILITAS -->
+      <div class="form-group">
+        <label for="facility">
+          🔧 Fasilitas / Barang
+        </label>
+        <input
+          type="text"
+          id="facility"
+          placeholder="Contoh: Lampu, AC, kursi, pintu">
+      </div>
+      <!-- DESKRIPSI -->
+      <div class="form-group">
+        <label for="description">
+          📝 Deskripsi Kerusakan
+        </label>
+        <textarea
+          id="description"
+          rows="5"
+          placeholder="Jelaskan kerusakan yang terjadi..."></textarea>
+      </div>
+      <!-- FOTO -->
+      <div class="photo-section">
+        <label for="photo">
+          📸 Upload Foto
+        </label>
+        <input
+          type="file"
+          id="photo"
+          accept="image/*"
+          capture="environment"
+        >
+      </div>
+
+
+      <!-- SUBMIT -->
+
+      <button
+        type="button"
+        id="submitIssue"
+        class="btn"
+      >
+        Kirim Laporan
+      </button>
+
+
+      <p id="message"></p>
+
+
+      <a href="home.html" class="back-link">
+        ← Kembali
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <script type="module">
+ import { supabase } from "./js/supabase.js";
+const submitButton = document.getElementById("submitIssue");
+const message = document.getElementById("message");
+const photoInput = document.getElementById("photo");
+ 
+// ==============================
+// CEK LOGIN
+// ==============================
+const {
+  data: { session }
+} = await supabase.auth.getSession();
+ 
+if (!session) {
+  window.location.href = "index.html";
+}
+ 
+// ==============================
+// AMBIL PROFILE (buat nama pelapor)
+// ==============================
+const {
+  data: profile,
+  error: profileError
+} = await supabase
+  .from("profiles")
+  .select("full_name")
+  .eq("id", session.user.id)
+  .single();
+ 
+if (profileError || !profile) {
+  message.textContent = "❌ Profile tidak ditemukan.";
+  throw new Error("Profile tidak ditemukan");
+}
+ 
+// ==============================
+// SUBMIT
+// ==============================
+submitButton.addEventListener("click", async () => {
+  const area = document.getElementById("area").value;
+  const facility = document.getElementById("facility").value.trim();
+  const description = document.getElementById("description").value.trim();
+ 
+  // CEK AREA
+  if (!area) {
+    message.textContent = "❌ Silakan pilih area.";
+    return;
+  }
+ 
+  // CEK FASILITAS
+  if (!facility) {
+    message.textContent = "❌ Silakan isi nama fasilitas atau barang.";
+    return;
+  }
+ 
+  // CEK DESKRIPSI
+  if (!description) {
+    message.textContent = "❌ Silakan isi deskripsi kerusakan.";
+    return;
+  }
+ 
+  // CEK FOTO
+  const photo = photoInput.files[0];
+  if (!photo) {
+    message.textContent = "❌ Silakan upload foto bukti.";
+    return;
+  }
+ 
+  submitButton.disabled = true;
+  message.textContent = "⏳ Menyimpan laporan...";
+ 
+  try {
+    // UPLOAD FOTO KE STORAGE
+    const fileExt = photo.name.split(".").pop();
+    const filePath = `${session.user.id}/${Date.now()}.${fileExt}`;
+ 
+    const { error: uploadError } = await supabase.storage
+      .from("checklist-photos")
+      .upload(filePath, photo);
+ 
+    if (uploadError) {
+      throw uploadError;
+    }
+ 
+    const {
+      data: { publicUrl }
+    } = supabase.storage.from("checklist-photos").getPublicUrl(filePath);
+ 
+    // SIMPAN LAPORAN KE DATABASE
+    const { error: insertError } = await supabase
+      .from("damage_reports")
+      .insert({
+        user_id: session.user.id,
+        nama: profile.full_name,
+        area: area,
+        fasilitas: facility,
+        deskripsi: description,
+        foto_url: publicUrl,
+        status: "pending"
+      });
+ 
+    if (insertError) {
+      throw insertError;
+    }
+ 
+    message.textContent = "✅ Laporan berhasil dikirim!";
+ 
+    // Reset form setelah berhasil
+    document.getElementById("area").value = "";
+    document.getElementById("facility").value = "";
+    document.getElementById("description").value = "";
+    photoInput.value = "";
+  } catch (error) {
+    console.error(error);
+    message.textContent = "❌ Gagal mengirim laporan: " + error.message;
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+  </script>
+</body>
+</html>

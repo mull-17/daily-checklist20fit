@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard HRD - Daily Cleaning</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="hrd-layout">
+    <!-- SIDEBAR -->
+     <aside class="hrd-sidebar">
+      <button id="sidebarToggle" class="sidebar-toggle" type="button">
+      <svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
+</svg>
+      </button>
+      <div class="sidebar-logo">
+        <img src="assets/img/20fit-logo.png" alt="20FIT" class="sidebar-logo-img">
+      </div>
+      <nav class="sidebar-menu">
+       <a href="#" id="dashboardMenu" class="sidebar-link active">
+  <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
+</svg>
+</span>
+  Home
+</a>
+<a href="#" id="dailyMenu" class="sidebar-link">
+  <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M5.005 10.19a1 1 0 0 1 1 1v.233l5.998 3.464L18 11.423v-.232a1 1 0 1 1 2 0V12a1 1 0 0 1-.5.866l-6.997 4.042a1 1 0 0 1-1 0l-6.998-4.042a1 1 0 0 1-.5-.866v-.81a1 1 0 0 1 1-1ZM5 15.15a1 1 0 0 1 1 1v.232l5.997 3.464 5.998-3.464v-.232a1 1 0 1 1 2 0v.81a1 1 0 0 1-.5.865l-6.998 4.042a1 1 0 0 1-1 0L4.5 17.824a1 1 0 0 1-.5-.866v-.81a1 1 0 0 1 1-1Z" clip-rule="evenodd"/>
+  <path d="M12.503 2.134a1 1 0 0 0-1 0L4.501 6.17A1 1 0 0 0 4.5 7.902l7.002 4.047a1 1 0 0 0 1 0l6.998-4.04a1 1 0 0 0 0-1.732l-6.997-4.042Z"/>
+</svg>
+</span>
+  Daily</a>
+<a href="#" id="monthlyMenu" class="sidebar-link">
+  <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M8.64 4.737A7.97 7.97 0 0 1 12 4a7.997 7.997 0 0 1 6.933 4.006h-.738c-.65 0-1.177.25-1.177.9 0 .33 0 2.04-2.026 2.008-1.972 0-1.972-1.732-1.972-2.008 0-1.429-.787-1.65-1.752-1.923-.374-.105-.774-.218-1.166-.411-1.004-.497-1.347-1.183-1.461-1.835ZM6 4a10.06 10.06 0 0 0-2.812 3.27A9.956 9.956 0 0 0 2 12c0 5.289 4.106 9.619 9.304 9.976l.054.004a10.12 10.12 0 0 0 1.155.007h.002a10.024 10.024 0 0 0 1.5-.19 9.925 9.925 0 0 0 2.259-.754 10.041 10.041 0 0 0 4.987-5.263A9.917 9.917 0 0 0 22 12a10.025 10.025 0 0 0-.315-2.5A10.001 10.001 0 0 0 12 2a9.964 9.964 0 0 0-6 2Zm13.372 11.113a2.575 2.575 0 0 0-.75-.112h-.217A3.405 3.405 0 0 0 15 18.405v1.014a8.027 8.027 0 0 0 4.372-4.307ZM12.114 20H12A8 8 0 0 1 5.1 7.95c.95.541 1.421 1.537 1.835 2.415.209.441.403.853.637 1.162.54.712 1.063 1.019 1.591 1.328.52.305 1.047.613 1.6 1.316 1.44 1.825 1.419 4.366 1.35 5.828Z" clip-rule="evenodd"/>
+</svg>
+</span>
+  Monthly
+</a>
+<a href="#" id="damageMenu"class="sidebar-link">
+  <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path d="M8.4 6.763c-.251.1-.383.196-.422.235L6.564 5.584l2.737-2.737c1.113-1.113 3.053-1.097 4.337.187l1.159 1.159a1 1 0 0 1 1.39.022l4.105 4.105a1 1 0 0 1 .023 1.39l1.345 1.346a1 1 0 0 1 0 1.415l-2.052 2.052a1 1 0 0 1-1.414 0l-1.346-1.346a1 1 0 0 1-1.323.039L11.29 8.983a1 1 0 0 1 .04-1.324l-.849-.848c-.18-.18-.606-.322-1.258-.25a3.271 3.271 0 0 0-.824.202Zm1.519 3.675L3.828 16.53a1 1 0 0 0 0 1.414l2.736 2.737a1 1 0 0 0 1.414 0l6.091-6.091-4.15-4.15Z"/>
+</svg>
+</span>
+  Facility Issue
+</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <button id="logout-Btn" class="sidebar-logout"> 
+<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 6v12M8 6v12l8-6-8-6Z"/>
+</svg>
+<span>Logout</span>
+        </button>
+      </div>
+     </aside>
+     <!-- CONTENT -->
+      <main class="hrd-main">
+       <!-- TOP BAR -->
+        <header class="hrd-topbar">
+          <div>
+            <h1>Dashboard</h1>
+            <p>Monitoring Daily Checking Staff</p>
+          </div>
+          <div class="hrd-user">
+             <div class="notif-wrapper">
+            <button id="notifBellBtn" class="notif-bell-btn" type="button"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.292-.538 1.292H5.538C5 18 5 17.301 5 16.708c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365ZM8.733 18c.094.852.306 1.54.944 2.112a3.48 3.48 0 0 0 4.646 0c.638-.572 1.236-1.26 1.33-2.112h-6.92Z"/>
+</svg>
+<span id="notifBadge" class="notif-badge" style="display: none;">0</span>
+            </button>
+            <div id="notifDropDown" class="notif-dropdown" style="display: none;">
+              <div class="notif-dropdown-header">
+                <strong>Notifikasi</strong>
+                <button id="notifikasiMarkAllRead" type="button" class="notif-mark-all">Tandai semua dibaca</button>
+              </div>
+              <div id="notifList" class="notif-list">
+              </div>
+            </div>
+          </div>
+            <div class="user-avatar">
+             <svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
+</svg>
+            </div>
+              <div>
+            <strong id="hrdName">Email</strong>
+          </div>
+          </div>
+        </header>
+<!-- ========================================
+     DAMAGE PAGE
+======================================== -->
+<section id="damagePage" class="dashboard-page">
+  <!-- TITLE -->
+  <div class="page-title">
+    <div>
+      <h2>Facility Issue</h2>
+    </div>
+    <div class="damage-filter">
+      <select id="damageStatusFilter">
+        <option value="all">
+          Semua Status
+        </option>
+        <option value="pending">
+          Belum Diperbaiki
+        </option>
+        <option value="process">
+          Sedang Diproses
+        </option>
+        <option value="done">
+          Selesai
+        </option>
+      </select>
+    </div>
+  </div>
+  <!-- SUMMARY -->
+  <div class="damage-summary">
+    <div class="damage-stat">
+      <div class="damage-stat-icon">
+      <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="m20.9532 11.7634-2.0523-2.05225-2.0523 2.05225 2.0523 2.0523 2.0523-2.0523Zm-1.3681-2.73651-4.1046-4.10457L12.06 8.3428l4.1046 4.1046 3.4205-3.42051Zm-4.1047 2.73651-2.7363-2.73638-8.20919 8.20918 2.73639 2.7364 8.2091-8.2092Z"/>
+  <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="m12.9306 3.74083 1.8658 1.86571-2.0523 2.05229-1.5548-1.55476c-.995-.99505-3.23389-.49753-3.91799.18657l2.73639-2.73639c.6841-.68409 1.9901-.74628 2.9229.18658Z"/>
+</svg>
+      </div>
+      <div>
+        <span>Total Kerusakan</span>
+        <strong id="damageStatTotal">0</strong>
+        <small>Laporan</small>
+      </div>
+    </div>
+    <div class="damage-stat">
+      <div class="damage-stat-icon">
+        🔴
+      </div>
+      <div>
+        <span>Belum Diperbaiki</span>
+        <strong id="damageStatPending">0</strong>
+        <small>Laporan</small>
+      </div>
+    </div>
+    <div class="damage-stat">
+      <div class="damage-stat-icon">
+        🟡
+      </div>
+      <div>
+        <span>Sedang Diproses</span>
+        <strong id="damageStatProcess">0</strong>
+        <small>Laporan</small>
+      </div>
+    </div>
+    <div class="damage-stat">
+      <div class="damage-stat-icon">
+        🟢
+      </div>
+      <div>
+        <span>Selesai</span>
+        <strong id="damageStatDone">0</strong>
+        <small>Laporan</small>
+      </div>
+    </div>
+  </div>
+  <!-- REPORT LIST -->
+  <div class="damage-list-card">
+    <div class="table-header">
+      <div>
+        <h3>
+          Laporan Kerusakan
+        </h3>
+        <p>
+          Daftar laporan fasilitas 
+        </p>
+      </div>
+    </div>
+    <div id="damageList" class="damage-list">
+      <!-- DATA AKAN MUNCUL DI SINI -->
+      <div class="damage-empty">
+        <div><svg viewBox="0 0 30 30" id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><style type="text/css"> .st0{fill:#FD6A7E;} .st1{fill:#17B978;} .st2{fill:#8797EE;} .st3{fill:#41A6F9;} .st4{fill:#37E0FF;} .st5{fill:#2FD9B9;} .st6{fill:#F498BD;} .st7{fill:#FFDF1D;} .st8{fill:#C6C9CC;} </style><path class="st8" d="M6,9.3L3.9,5.8l1.4-1.4l3.5,2.1v1.4l3.6,3.6c0,0.1,0,0.2,0,0.3L11.1,13L7.4,9.3H6z M21,17.8c-0.3,0-0.5,0-0.8,0 c0,0,0,0,0,0c-0.7,0-1.3-0.1-1.9-0.2l-2.1,2.4l4.7,5.3c1.1,1.2,3,1.3,4.1,0.1c1.2-1.2,1.1-3-0.1-4.1L21,17.8z M24.4,14 c1.6-1.6,2.1-4,1.5-6.1c-0.1-0.4-0.6-0.5-0.8-0.2l-3.5,3.5l-2.8-2.8l3.5-3.5c0.3-0.3,0.2-0.7-0.2-0.8C20,3.4,17.6,3.9,16,5.6 c-1.8,1.8-2.2,4.6-1.2,6.8l-10,8.9c-1.2,1.1-1.3,3-0.1,4.1l0,0c1.2,1.2,3,1.1,4.1-0.1l8.9-10C19.9,16.3,22.6,15.9,24.4,14z"></path></g></svg></div>
+        <h3>
+          Belum ada laporan kerusakan
+        </h3>
+        <p>
+          Laporan kerusakan
+          akan muncul di sini.
+        </p>
+      </div>
+    </div>
+  </div>
+  </section>
+        <!-- DAILY PAGE -->
+<section id="dailyPage" class="dashboard-page">
+  <div class="page-title">
+    <div>
+      <h2>Daily Checking</h2>
+    </div>
+    <div class="daily-filter">
+      <input
+        type="date"
+        id="dailyDate">
+    </div>
+  </div>
+  <!-- DAILY TAB -->
+  <div class="daily-tabs">
+    <button class="daily-tab active" data-type="opening">
+      <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M13 3a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V3ZM6.343 4.929A1 1 0 0 0 4.93 6.343l1.414 1.414a1 1 0 0 0 1.414-1.414L6.343 4.929Zm12.728 1.414a1 1 0 0 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-9 4a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H3Zm16 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM7.757 17.657a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414Zm9.9-1.414a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM13 19a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Z" clip-rule="evenodd"/>
+</svg>
+</span>
+       Opening
+    </button>
+    <button class="daily-tab" data-type="closing"> 
+      <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M11.675 2.015a.998.998 0 0 0-.403.011C6.09 2.4 2 6.722 2 12c0 5.523 4.477 10 10 10 4.356 0 8.058-2.784 9.43-6.667a1 1 0 0 0-1.02-1.33c-.08.006-.105.005-.127.005h-.001l-.028-.002A5.227 5.227 0 0 0 20 14a8 8 0 0 1-8-8c0-.952.121-1.752.404-2.558a.996.996 0 0 0 .096-.428V3a1 1 0 0 0-.825-.985Z" clip-rule="evenodd"/>
+</svg>
+</span>
+      Closing 
+    </button>
+  </div>
+  <!-- TABLE -->
+  <div class="daily-table-card">
+    <div class="table-header">
+      <div>
+        <h3 id="dailyTableTitle">
+          Opening Checklist
+        </h3>
+      </div>
+    </div>
+    <div class="table-wrapper">
+      <table class="daily-table">
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Tanggal</th>
+            <th>Status</th>
+            <th>Waktu Submit</th>
+            <th>Foto</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody id="dailyTableBody">
+          <tr>
+            <td colspan="6">
+              Belum ada data checklist.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+         <!-- SUMMARY -->
+      <section class="hrd-summary">
+        <div class="hrd-stat">
+          <div class="stat-icon">
+            <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M13 3a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V3ZM6.343 4.929A1 1 0 0 0 4.93 6.343l1.414 1.414a1 1 0 0 0 1.414-1.414L6.343 4.929Zm12.728 1.414a1 1 0 0 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-9 4a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H3Zm16 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM7.757 17.657a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414Zm9.9-1.414a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM13 19a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Z" clip-rule="evenodd"/>
+</svg>
+</span>
+          </div>
+          <div>
+            <span>Opening</span>
+            <strong id="statOpeningToday">0</strong>
+            <small>Hari ini</small>
+          </div>
+        </div>
+        <div class="hrd-stat">
+          <div class="stat-icon">
+              <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M11.675 2.015a.998.998 0 0 0-.403.011C6.09 2.4 2 6.722 2 12c0 5.523 4.477 10 10 10 4.356 0 8.058-2.784 9.43-6.667a1 1 0 0 0-1.02-1.33c-.08.006-.105.005-.127.005h-.001l-.028-.002A5.227 5.227 0 0 0 20 14a8 8 0 0 1-8-8c0-.952.121-1.752.404-2.558a.996.996 0 0 0 .096-.428V3a1 1 0 0 0-.825-.985Z" clip-rule="evenodd"/>
+</svg>
+</span>
+          </div>
+          <div>
+            <span>Closing</span>
+            <strong id="statClosingToday">0</strong>
+            <small>Hari ini</small>
+          </div>
+        </div>
+        <div class="hrd-stat">
+          <div class="stat-icon">
+             <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path d="M8.4 6.763c-.251.1-.383.196-.422.235L6.564 5.584l2.737-2.737c1.113-1.113 3.053-1.097 4.337.187l1.159 1.159a1 1 0 0 1 1.39.022l4.105 4.105a1 1 0 0 1 .023 1.39l1.345 1.346a1 1 0 0 1 0 1.415l-2.052 2.052a1 1 0 0 1-1.414 0l-1.346-1.346a1 1 0 0 1-1.323.039L11.29 8.983a1 1 0 0 1 .04-1.324l-.849-.848c-.18-.18-.606-.322-1.258-.25a3.271 3.271 0 0 0-.824.202Zm1.519 3.675L3.828 16.53a1 1 0 0 0 0 1.414l2.736 2.737a1 1 0 0 0 1.414 0l6.091-6.091-4.15-4.15Z"/>
+</svg>
+</span>
+          </div>
+          <div>
+            <span>Kerusakan</span>
+            <strong>0</strong>
+            <small>Belum selesai</small>
+          </div>
+        </div>
+        <div class="hrd-stat">
+          <div class="stat-icon">
+            <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H6Zm7.25-2.095c.478-.86.75-1.85.75-2.905a5.973 5.973 0 0 0-.75-2.906 4 4 0 1 1 0 5.811ZM15.466 20c.34-.588.535-1.271.535-2v-1a5.978 5.978 0 0 0-1.528-4H18a4 4 0 0 1 4 4v1a2 2 0 0 1-2 2h-4.535Z" clip-rule="evenodd"/>
+</svg>
+</span>
+          </div>
+          <div>
+            <span>Staff</span>
+            <strong id="statEmployeeCount">0</strong>
+            <small>Terdaftar</small>
+          </div>
+        </div>
+      </section>
+      <!-- TODAY -->
+      <section class="hrd-section">
+        <div class="section-heading">
+          <div>
+            <h2>Daily Checking</h2>
+            <p>
+              Aktivitas checklist hari ini
+            </p>
+          </div>
+          <button class="date-button">
+            <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>
+</svg>
+</span> 
+Hari ini
+          </button>
+        </div>
+        <div class="daily-grid">
+          <!-- OPENING -->
+          <div class="daily-card">
+            <div class="daily-card-header">
+              <div class="daily-card-icon">
+                <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M13 3a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V3ZM6.343 4.929A1 1 0 0 0 4.93 6.343l1.414 1.414a1 1 0 0 0 1.414-1.414L6.343 4.929Zm12.728 1.414a1 1 0 0 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-9 4a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H3Zm16 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM7.757 17.657a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414Zm9.9-1.414a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM13 19a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Z" clip-rule="evenodd"/>
+</svg>
+</span>
+              </div>
+              <span class="status-label">
+                Opening
+              </span>
+            </div>
+            <h3>
+              Opening Checklist
+            </h3>
+            <div class="progress-area">
+              <div class="progress-info">
+                <span>
+                  Laporan masuk
+                </span>
+                <strong id="cardOpeningProgress">0 / 0</strong>
+              </div>
+            <div class="progress-bar"> 
+                <div class="progress-fill" id="cardOpeningBar" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+          <!-- CLOSING -->
+          <div class="daily-card">
+            <div class="daily-card-header">
+              <div class="daily-card-icon">
+               <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M11.675 2.015a.998.998 0 0 0-.403.011C6.09 2.4 2 6.722 2 12c0 5.523 4.477 10 10 10 4.356 0 8.058-2.784 9.43-6.667a1 1 0 0 0-1.02-1.33c-.08.006-.105.005-.127.005h-.001l-.028-.002A5.227 5.227 0 0 0 20 14a8 8 0 0 1-8-8c0-.952.121-1.752.404-2.558a.996.996 0 0 0 .096-.428V3a1 1 0 0 0-.825-.985Z" clip-rule="evenodd"/>
+</svg>
+</span>
+              </div>
+              <span class="status-label">
+                Closing
+              </span>
+            </div>
+            <h3>Closing Checklist</h3>
+            <div class="progress-area">
+              <div class="progress-info">
+                <span>
+                  Laporan masuk
+                </span>
+                <strong id="cardClosingProgress">0 / 0</strong>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="cardClosingBar" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- RECENT REPORT -->
+      <section class="hrd-section">
+        <div class="section-heading">
+          <div>
+            <h2>Laporan Terbaru</h2>
+            <p>
+              Aktivitas terbaru
+            </p>
+          </div>
+        </div>
+      <div class="empty-report">
+          <span><svg class="w-[40px] h-[40px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"/>
+</svg>
+</span>
+          <h3>Belum ada laporan</h3>
+          <p>Laporan akan muncul di sini.</p>
+        </div>
+      </section>
+<!-- ========================================
+     MONTHLY PAGE
+======================================== -->
+<section id="monthlyPage" class="dashboard-page">
+  <!-- TITLE -->
+  <div class="page-title">
+    <div>
+      <h2>Laporan Bulanan</h2>
+    </div>
+    <div class="monthly-filter">
+      <select id="monthlyMonth">
+        <option value="0">Januari</option>
+        <option value="1">Februari</option>
+        <option value="2">Maret</option>
+        <option value="3">April</option>
+        <option value="4">Mei</option>
+        <option value="5">Juni</option>
+        <option value="6">Juli</option>
+        <option value="7">Agustus</option>
+        <option value="8">September</option>
+        <option value="9">Oktober</option>
+        <option value="10">November</option>
+        <option value="11">Desember</option>
+      </select>
+      <select id="monthlyYear">
+        <option value="2026" selected>2026</option>
+        <option value="2027">2027</option>
+      </select>
+    </div>
+  </div>
+  <!-- SUMMARY BULANAN -->
+  <div class="monthly-summary">
+    <div class="monthly-stat">
+      <span>Total Karyawan</span>
+      <strong id="monthlyStatStaff">0</strong>
+      <small>Terdaftar</small>
+    </div>
+    <div class="monthly-stat">
+      <span>Total Opening</span>
+      <strong id="monthlyStatOpening">0</strong>
+      <small>Checklist</small>
+    </div>
+    <div class="monthly-stat">
+      <span>Total Closing</span>
+      <strong id="monthlyStatClosing">0</strong>
+      <small>Checklist</small>
+    </div>
+    <div class="monthly-stat">
+      <span>Checklist Selesai</span>
+      <strong id="monthlyStatPercent">0%</strong>
+      <small id="monthlyStatPercentNote">Bulan ini</small>
+    </div>
+  </div>
+  <!-- TABLE -->
+  <div class="monthly-table-card">
+    <div class="table-header">
+      <div>
+        <h3>Rekap</h3>
+        <p id="monthlyTableDescription">
+          Rekap aktivitas checklist
+        </p>
+      </div>
+    </div>
+    <div class="table-wrapper">
+      <table class="monthly-table">
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Opening</th>
+            <th>Closing</th>
+            <th>Total</th>
+            <th>Selesai</th>
+            <th>Persentase</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody id="monthlyTableBody">
+          <tr>
+            <td colspan="7">
+              Belum ada data checklist.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="monthly-note">
+      <strong>Selesai</strong> = checklist yang semua itemnya dicentang.
+      <strong>Persentase</strong> = Selesai ÷ Total checklist yang disubmit.
+      Kartu <strong>Checklist Selesai</strong> = sesi opening &amp; closing yang terlaksana dari seluruh sesi bulan berjalan (2 sesi per hari).
+    </p>
+  </div>
+</section>
+      </main>
+  </div>
+<script type="module">
+  import { supabase } from "./js/supabase.js";
+  // ========================================
+  // CEK SESSION
+  // ========================================
+  const {
+  data: { session },
+  error: sessionError,
+} = await supabase.auth.getSession();
+if (sessionError) {
+  console.error("❌ Session error:", sessionError);
+}
+if (!session) {
+  window.location.href = "index.html";
+}
+// Tampilkan email user
+const hrdName = document.getElementById("hrdName");
+if (hrdName) {
+  hrdName.textContent = session.user.email;
+}
+ 
+// ========================================
+// SIDEBAR TOGGLE
+// ========================================
+ 
+const sidebarToggle = document.getElementById("sidebarToggle");
+const hrdLayout = document.querySelector(".hrd-layout");
+ 
+if (sidebarToggle && hrdLayout) {
+  sidebarToggle.addEventListener("click", () => {
+    hrdLayout.classList.toggle("sidebar-collapsed");
+    sidebarToggle.classList.toggle("active");
+ 
+    console.log(
+      "Sidebar:",
+      hrdLayout.classList.contains("sidebar-collapsed") ? "Tertutup" : "Terbuka"
+    );
+  });
+} else {
+  console.error("❌ Toggle atau layout tidak ditemukan");
+}
+ // ========================================
+// FASILITAS / KERUSAKAN
+// ========================================
+const damageList = document.getElementById("damageList");
+const damageStatusFilter = document.getElementById("damageStatusFilter");
+ 
+let allDamageReports = [];
+ 
+async function loadDamageReports() {
+  damageList.innerHTML = `<div class="damage-empty"><p>Memuat data...</p></div>`;
+ 
+  const { data, error } = await supabase
+    .from("damage_reports")
+    .select("id, nama, area, fasilitas, deskripsi, foto_url, status, created_at")
+    .order("created_at", { ascending: false });
+ 
+  if (error) {
+    console.error("❌ Gagal memuat laporan kerusakan:", error);
+    damageList.innerHTML = `<div class="damage-empty"><p>❌ Gagal memuat data.</p></div>`;
+    return;
+  }
+ 
+  allDamageReports = data || [];
+  updateDamageSummary(allDamageReports);
+  renderDamageList();
+}
+ 
+function updateDamageSummary(reports) {
+  const total = reports.length;
+  const pending = reports.filter((r) => r.status === "pending").length;
+  const process = reports.filter((r) => r.status === "process").length;
+  const done = reports.filter((r) => r.status === "done").length;
+ 
+  setDamageStat("damageStatTotal", total);
+  setDamageStat("damageStatPending", pending);
+  setDamageStat("damageStatProcess", process);
+  setDamageStat("damageStatDone", done);
+ 
+  // Sinkronkan juga ke kartu "Kerusakan" di halaman Dashboard utama
+  setDamageStat("statDamagePending", pending);
+}
+ 
+function setDamageStat(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+ 
+function renderDamageList() {
+  const filter = damageStatusFilter ? damageStatusFilter.value : "all";
+  const filtered =
+    filter === "all"
+      ? allDamageReports
+      : allDamageReports.filter((r) => r.status === filter);
+ 
+  if (filtered.length === 0) {
+    damageList.innerHTML = `
+      <div class="damage-empty">
+        <h3>Belum ada laporan kerusakan</h3>
+        <p>Laporan kerusakan akan muncul di sini.</p>
+      </div>
+    `;
+    return;
+  }
+ 
+  damageList.innerHTML = "";
+  filtered.forEach((report) => {
+    damageList.appendChild(buildDamageItem(report));
+  });
+}
+ 
+const STATUS_LABEL = {
+  pending: "🔴 Belum Diperbaiki",
+  process: "🟡 Sedang Diproses",
+  done: "🟢 Selesai"
+};
+ 
+function buildDamageItem(report) {
+  const item = document.createElement("div");
+  item.className = "damage-item";
+ 
+  const waktu = report.created_at
+    ? new Date(report.created_at).toLocaleString("id-ID", {
+        dateStyle: "medium",
+        timeStyle: "short"
+      })
+    : "-";
+ 
+  const fotoLink = report.foto_url
+    ? `<a href="${report.foto_url}" target="_blank" rel="noopener">Lihat Foto</a>`
+    : "";
+ 
+  item.innerHTML = `
+    <div class="damage-item-header">
+      <strong>${escapeHtml(report.fasilitas)}</strong>
+      <span class="damage-badge damage-badge-${report.status}">
+        ${STATUS_LABEL[report.status] || report.status}
+      </span>
+    </div>
+    <p class="damage-area">📍 ${escapeHtml(report.area)}</p>
+    <p class="damage-desc">${escapeHtml(report.deskripsi)}</p>
+    <div class="damage-meta">
+      <span>${escapeHtml(report.nama)}</span>
+      <span>${waktu}</span>
+      ${fotoLink}
+    </div>
+    <div class="damage-actions">
+      <select class="damage-status-select" data-id="${report.id}">
+        <option value="pending" ${report.status === "pending" ? "selected" : ""}>Belum Diperbaiki</option>
+        <option value="process" ${report.status === "process" ? "selected" : ""}>Sedang Diproses</option>
+        <option value="done" ${report.status === "done" ? "selected" : ""}>Selesai</option>
+      </select>
+    </div>
+  `;
+ 
+  const select = item.querySelector(".damage-status-select");
+  select.addEventListener("change", async (event) => {
+    await updateDamageStatus(report.id, event.target.value);
+  });
+ 
+  return item;
+}
+ 
+async function updateDamageStatus(id, newStatus) {
+  const { error } = await supabase
+    .from("damage_reports")
+    .update({ status: newStatus })
+    .eq("id", id);
+ 
+  if (error) {
+    console.error("❌ Gagal update status:", error);
+    alert("Gagal mengubah status: " + error.message);
+    return;
+  }
+ 
+  await loadDamageReports();
+}
+ 
+if (damageStatusFilter) {
+  damageStatusFilter.addEventListener("change", renderDamageList);
+}
+// ========================================
+// LOGOUT
+// ========================================
+ 
+const logoutBtn = document.getElementById("logout-Btn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", async () => {
+    await supabase.auth.signOut();
+    window.location.href = "index.html";
+  });
+}
+ 
+// ========================================
+// ELEMENT REFERENCES (menu & page)
+// ========================================
+ 
+const dashboardMenu = document.getElementById("dashboardMenu");
+const dailyMenu = document.getElementById("dailyMenu");
+const monthlyMenu = document.getElementById("monthlyMenu");
+const damageMenu = document.getElementById("damageMenu");
+const dailyPage = document.getElementById("dailyPage");
+const monthlyPage = document.getElementById("monthlyPage");
+const damagePage = document.getElementById("damagePage");
+const dashboardSections = document.querySelectorAll(".hrd-summary, .hrd-section");
+// ========================================
+// NAVIGASI: helper generic show/hide page
+// ========================================
+/**
+ * Sembunyikan semua page/section, lalu tampilkan salah satunya.
+ * @param {"dashboard"|"daily"|"monthly"|"damage"} target
+ * @param {HTMLElement} activeMenu - elemen menu yang sedang diklik
+ */
+function showPage(target, activeMenu) {
+  // Sembunyikan dashboard
+  dashboardSections.forEach((section) => {
+    section.style.display = target === "dashboard" ? "" : "none";
+  });
+ 
+  // Sembunyikan/tampilkan page lain
+  if (dailyPage) dailyPage.style.display = target === "daily" ? "block" : "none";
+  if (monthlyPage) monthlyPage.style.display = target === "monthly" ? "block" : "none";
+  if (damagePage) damagePage.style.display = target === "damage" ? "block" : "none";
+ 
+  // Update menu aktif
+  document.querySelectorAll(".sidebar-link").forEach((link) => {
+    link.classList.remove("active");
+  });
+  activeMenu.classList.add("active");
+// Setiap kali pindah ke halaman Daily, tarik data terbaru 
+  if (target === "daily") {
+    loadDailyChecklist();
+  } if (target === "dashboard") {
+    loadDashboardSummary();
+  } if (target === "damage") {
+    loadDamageReports();
+  } if (target === "monthly") {
+    loadMonthly();
+  }
+}
+
+// ========================================
+// EVENT LISTENERS: menu sidebar
+// ========================================
+ 
+dashboardMenu.addEventListener("click", (event) => {
+  event.preventDefault();
+  showPage("dashboard", dashboardMenu);
+});
+ 
+dailyMenu.addEventListener("click", (event) => {
+  event.preventDefault();
+  showPage("daily", dailyMenu);
+});
+ 
+monthlyMenu.addEventListener("click", (event) => {
+  event.preventDefault();
+  showPage("monthly", monthlyMenu);
+});
+ 
+damageMenu.addEventListener("click", (event) => {
+  event.preventDefault();
+  showPage("damage", damageMenu);
+});
+ 
+// ========================================
+// DAILY TAB (Opening / Closing checklist)
+// ========================================
+ 
+const dailyTabs = document.querySelectorAll(".daily-tab");
+const dailyTableTitle = document.getElementById("dailyTableTitle");
+const dailyTableDescription = document.getElementById("dailyTableDescription");
+const dailyDateInput = document.getElementById("dailyDate");
+const dailyTableBody = document.getElementById("dailyTableBody");
+ 
+const DAILY_TAB_CONTENT = {
+  opening: {
+    title: "Opening Checklist",
+    description: "Checklist area depan",
+  },
+  closing: {
+    title: "Closing Checklist",
+    description: "Checklist area belakang",
+  },
+};
+ 
+dailyTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    dailyTabs.forEach((item) => item.classList.remove("active"));
+    tab.classList.add("active");
+ 
+    const type = tab.dataset.type;
+    const content = DAILY_TAB_CONTENT[type];
+ 
+    if (content) {
+      dailyTableTitle.textContent = content.title;
+    if (dailyTableDescription) {
+      dailyTableDescription.textContent = content.description;
+     }
+    }
+    loadDailyChecklist();
+  });
+});
+if (dailyDateInput) {
+  // Default; hari ini 
+  dailyDateInput.valueAsDate = new Date();
+  dailyDateInput.addEventListener("change", loadDailyChecklist);
+}
+// ========================================
+// FETCH & RENDER DATA CHECKLIST
+// ========================================
+async function loadDailyChecklist(){
+  const activeTab = document.querySelector(".daily-tab.active");
+  const shift = activeTab ? activeTab.dataset.type : "opening";
+  const tanggal = dailyDateInput ? dailyDateInput.value : null;
+ 
+  dailyTableBody.innerHTML = `<tr><td colspan="7">Memuat data...</td></tr>`;
+ 
+  let query = supabase
+    .from("daily_checklists")
+    .select("id, nama, tanggal, foto_url, waktu_submit, shift, checklist_items(area, status)")
+    .eq("shift", shift)
+    .order("waktu_submit", { ascending: false });
+ 
+  if (tanggal) {
+    query = query.eq("tanggal", tanggal);
+
+}const { data, error } = await query;
+ 
+  if (error) {
+    console.error("❌ Gagal memuat checklist:", error);
+    dailyTableBody.innerHTML = `<tr><td colspan="7">❌ Gagal memuat data.</td></tr>`;
+    return;
+  }
+ 
+  if (!data || data.length === 0) {
+    dailyTableBody.innerHTML = `<tr><td colspan="7">Belum ada data checklist.</td></tr>`;
+    return;
+  }
+ 
+  dailyTableBody.innerHTML = "";
+ 
+  data.forEach((row) => {
+    dailyTableBody.appendChild(buildDailyRow(row));
+  });
+}
+ 
+function buildDailyRow(row) {
+  const tr = document.createElement("tr");
+ 
+  const items = row.checklist_items || [];
+  const isComplete = items.length > 0 && items.every((item) => item.status === "sudah");
+  const statusLabel = isComplete ? "✅ Lengkap" : "⚠️ Belum Lengkap";
+ 
+  const waktu = row.waktu_submit
+    ? new Date(row.waktu_submit).toLocaleTimeString("id-ID", {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    : "-";
+ 
+  const fotoCell = row.foto_url
+    ? `<a href="${row.foto_url}" target="_blank" rel="noopener">Lihat Foto</a>`
+    : "-";
+ 
+  const detailText = items.length
+    ? items.map((item) => `${item.area}: ${item.status}`).join(", ")
+    : "-";
+ 
+  tr.innerHTML = `
+    <td>${escapeHtml(row.nama)}</td>
+    <td>${row.tanggal ?? "-"}</td>
+    <td>${statusLabel}</td>
+    <td>${waktu}</td>
+    <td>${fotoCell}</td>
+    <td title="${escapeHtml(detailText)}">${items.length} area</td>
+    <td>
+     <button type="button" class="btn-delete-checklist" data-id="${row.id}" title="Hapus laporan">
+  <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+</svg>
+</button>
+    </td>
+  `;
+ 
+  const deleteBtn = tr.querySelector(".btn-delete-checklist");
+  deleteBtn.addEventListener("click", () => handleDeleteChecklist(row.id));
+ 
+  return tr;
+}
+ 
+// Cegah nama karyawan yang aneh-aneh merusak tampilan tabel (XSS-safe)
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.textContent = text ?? "";
+  return div.innerHTML;
+}
+ 
+// ========================================
+// DELETE CHECKLIST
+// ========================================
+ 
+function showConfirmModal(message) {
+  return new Promise((resolve) => {
+    const modal = document.getElementById("confirmModal");
+    const messageEl = modal.querySelector("p");
+    const yesBtn = document.getElementById("confirmYesBtn");
+    const cancelBtn = document.getElementById("confirmCancelBtn");
+ 
+    if (message) messageEl.textContent = message;
+    modal.style.display = "flex";
+ 
+    function cleanup(result) {
+      modal.style.display = "none";
+      yesBtn.removeEventListener("click", onYes);
+      cancelBtn.removeEventListener("click", onCancel);
+      resolve(result);
+    }
+ 
+    function onYes() {
+      cleanup(true);
+    }
+ 
+    function onCancel() {
+      cleanup(false);
+    }
+ 
+    yesBtn.addEventListener("click", onYes);
+    cancelBtn.addEventListener("click", onCancel);
+  });
+}
+ 
+// ========================================
+// DELETE CHECKLIST (versi update, pakai modal custom)
+// ========================================
+ 
+async function handleDeleteChecklist(id) {
+  const confirmed = await showConfirmModal(
+    "Apakah Anda yakin menghapus laporan ini?."
+  );
+ 
+  if (!confirmed) return;
+ 
+  try {
+    const { error: itemsError } = await supabase
+      .from("checklist_items")
+      .delete()
+      .eq("daily_checklist_id", id);
+ 
+    if (itemsError) throw itemsError;
+ 
+    const { error: checklistError } = await supabase
+      .from("daily_checklists")
+      .delete()
+      .eq("id", id);
+ 
+    if (checklistError) throw checklistError;
+ 
+    await loadDailyChecklist();
+  } catch (error) {
+    console.error("❌ Gagal menghapus checklist:", error);
+    alert("Gagal menghapus laporan: " + error.message);
+  }
+}
+
+// Muat data begitu file ini pertama kali jalan (kalau halaman Daily
+// yang aktif duluan saat dashboard dibuka)
+
+async function loadDashboardSummary() {
+  const todayISO = new Date().toISOString().split("T")[0];
+ 
+  // Total staf terdaftar (role = staff, tidak termasuk HRD)
+  const { count: staffCount, error: staffError } = await supabase
+    .from("profiles")
+    .select("id", { count: "exact", head: true })
+    .eq("role", "staff");
+ 
+  if (staffError) console.error("❌ Gagal ambil jumlah staf:", staffError);
+ 
+  // Opening hari ini
+  const { count: openingCount, error: openingError } = await supabase
+    .from("daily_checklists")
+    .select("id", { count: "exact", head: true })
+    .eq("tanggal", todayISO)
+    .eq("shift", "opening");
+ 
+  if (openingError) console.error("❌ Gagal ambil data opening:", openingError);
+ 
+  // Closing hari ini
+  const { count: closingCount, error: closingError } = await supabase
+    .from("daily_checklists")
+    .select("id", { count: "exact", head: true })
+    .eq("tanggal", todayISO)
+    .eq("shift", "closing");
+ 
+  if (closingError) console.error("❌ Gagal ambil data closing:", closingError);
+ 
+  const totalStaff = staffCount ?? 0;
+  const opening = openingCount ?? 0;
+  const closing = closingCount ?? 0;
+ 
+  // Isi angka di kartu ringkasan atas
+  setText("statOpeningToday", opening);
+  setText("statClosingToday", closing);
+  setText("statEmployeeCount", totalStaff);
+ 
+  // Isi progress card Opening & Closing
+  updateProgressCard("cardOpeningProgress", "cardOpeningBar", opening, totalStaff);
+  updateProgressCard("cardClosingProgress", "cardClosingBar", closing, totalStaff);
+}
+ 
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+ 
+function updateProgressCard(progressId, barId, done, total) {
+  const progressEl = document.getElementById(progressId);
+  const barEl = document.getElementById(barId);
+  const percent = total > 0 ? Math.round((done / total) * 100) : 0;
+ 
+  if (progressEl) progressEl.textContent = `${done} / ${total}`;
+  if (barEl) barEl.style.width = `${percent}%`;
+}
+ 
+// ========================================
+// MONTHLY: rekap checklist per staf
+// - Selesai    = checklist yang SEMUA itemnya berstatus "sudah"
+// - Persentase = Selesai ÷ Total checklist yang disubmit staf itu
+// - Kartu "Checklist Selesai" = sesi opening/closing yang terlaksana
+//   dibanding seluruh sesi bulan berjalan (2 sesi per hari)
+// ========================================
+const monthlyMonthSelect = document.getElementById("monthlyMonth");
+const monthlyYearSelect = document.getElementById("monthlyYear");
+const monthlyTableBody = document.getElementById("monthlyTableBody");
+const monthlyTableDescription = document.getElementById("monthlyTableDescription");
+const monthlyStat = {
+  staff: document.getElementById("monthlyStatStaff"),
+  opening: document.getElementById("monthlyStatOpening"),
+  closing: document.getElementById("monthlyStatClosing"),
+  percent: document.getElementById("monthlyStatPercent"),
+  percentNote: document.getElementById("monthlyStatPercentNote"),
+};
+const monthlyDetailModal = document.getElementById("monthlyDetailModal");
+const monthlyDetailTitle = document.getElementById("monthlyDetailTitle");
+const monthlyDetailSubtitle = document.getElementById("monthlyDetailSubtitle");
+const monthlyDetailBody = document.getElementById("monthlyDetailBody");
+
+const MONTH_NAMES = [
+  "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+  "Juli", "Agustus", "September", "Oktober", "November", "Desember",
+];
+
+let monthlyRows = [];         // hasil rekap terakhir (dipakai modal Detail)
+let monthlyInitialized = false;
+let monthlyRequestId = 0;     // abaikan respon lama kalau bulan diganti cepat-cepat
+
+function monthlyPad(n) {
+  return String(n).padStart(2, "0");
+}
+
+// Tanggal "hari ini" memakai cara yang sama dengan halaman staff (todayISO),
+// supaya konsisten dengan kolom `tanggal` yang tersimpan.
+function monthlyToday() {
+  const iso = new Date().toISOString().split("T")[0];
+  return { year: +iso.slice(0, 4), month: +iso.slice(5, 7) - 1, day: +iso.slice(8, 10) };
+}
+
+// Pertama kali dibuka: isi pilihan tahun & set ke bulan/tahun sekarang
+function monthlyInit() {
+  if (monthlyInitialized) return;
+  monthlyInitialized = true;
+
+  const today = monthlyToday();
+  const firstYear = Math.min(2026, today.year);
+  const lastYear = today.year + 1;
+
+  monthlyYearSelect.innerHTML = "";
+  for (let y = firstYear; y <= lastYear; y++) {
+    monthlyYearSelect.add(new Option(String(y), String(y)));
+  }
+  monthlyYearSelect.value = String(today.year);
+  monthlyMonthSelect.value = String(today.month);
+
+  monthlyMonthSelect.addEventListener("change", loadMonthly);
+  monthlyYearSelect.addEventListener("change", loadMonthly);
+}
+
+function monthlyShowMessage(text) {
+  monthlyTableBody.innerHTML = `<tr><td colspan="7">${escapeHtml(text)}</td></tr>`;
+}
+
+function monthlyResetCards(note) {
+  monthlyStat.staff.textContent = "0";
+  monthlyStat.opening.textContent = "0";
+  monthlyStat.closing.textContent = "0";
+  monthlyStat.percent.textContent = "-";
+  monthlyStat.percentNote.textContent = note;
+}
+
+async function loadMonthly() {
+  monthlyInit();
+
+  const requestId = ++monthlyRequestId;
+  const year = Number(monthlyYearSelect.value);
+  const month = Number(monthlyMonthSelect.value);
+  const lastDay = new Date(year, month + 1, 0).getDate();
+  const start = `${year}-${monthlyPad(month + 1)}-01`;
+  const end = `${year}-${monthlyPad(month + 1)}-${monthlyPad(lastDay)}`;
+  const periodLabel = `${MONTH_NAMES[month]} ${year}`;
+
+  monthlyTableDescription.textContent = `Rekap aktivitas checklist ${periodLabel}`;
+  monthlyShowMessage("Memuat data...");
+
+  const [staffRes, dailyRes] = await Promise.all([
+    supabase
+      .from("profiles")
+      .select("id, full_name")
+      .eq("role", "staff")
+      .order("full_name", { ascending: true }),
+    supabase
+      .from("daily_checklists")
+      .select("id, user_id, nama, shift, tanggal, waktu_submit, foto_url, checklist_items(area, status)")
+      .gte("tanggal", start)
+      .lte("tanggal", end)
+      .order("tanggal", { ascending: true })
+      .limit(5000),
+  ]);
+
+  if (requestId !== monthlyRequestId) return; // user sudah ganti bulan lagi
+
+  if (dailyRes.error) {
+    console.error("❌ Gagal memuat rekap bulanan:", dailyRes.error);
+    monthlyResetCards("Gagal memuat");
+    monthlyShowMessage(`Gagal memuat data: ${dailyRes.error.message}`);
+    return;
+  }
+  if (staffRes.error) {
+    // Rekap tetap jalan; hanya staf dengan 0 checklist yang tidak ikut tampil
+    console.error("⚠️ Gagal memuat daftar staf:", staffRes.error);
+  }
+
+  // ----- Kelompokkan per staf -----
+  const groups = new Map();
+  const ensureGroup = (key, name) => {
+    if (!groups.has(key)) {
+      groups.set(key, { key, name, opening: 0, closing: 0, complete: 0, entries: [] });
+    }
+    return groups.get(key);
+  };
+
+  (staffRes.data || []).forEach((p) => ensureGroup(p.id, p.full_name || "Tanpa nama"));
+
+  const coveredSlots = new Set();
+  let totalOpening = 0;
+  let totalClosing = 0;
+
+  (dailyRes.data || []).forEach((row) => {
+    const isOpening = row.shift === "opening";
+    const isClosing = row.shift === "closing";
+    if (!isOpening && !isClosing) return;
+
+    // Data staf yang profilnya sudah dihapus tetap dihitung (berdasarkan nama)
+    const group = ensureGroup(row.user_id || `nama:${row.nama}`, row.nama || "Tanpa nama");
+    const items = row.checklist_items || [];
+    const isComplete = items.length > 0 && items.every((item) => item.status === "sudah");
+
+    if (isOpening) { group.opening++; totalOpening++; }
+    if (isClosing) { group.closing++; totalClosing++; }
+    if (isComplete) {
+      group.complete++;
+      coveredSlots.add(`${row.tanggal}|${row.shift}`);
+    }
+    group.entries.push({ ...row, isComplete });
+  });
+
+  monthlyRows = [...groups.values()]
+    .map((g) => ({ ...g, total: g.opening + g.closing }))
+    .sort((a, b) => b.total - a.total || a.name.localeCompare(b.name, "id"));
+
+  // ----- Kartu ringkasan -----
+  const today = monthlyToday();
+  const selected = year * 12 + month;
+  const current = today.year * 12 + today.month;
+  const daysCounted = selected < current ? lastDay : selected === current ? today.day : 0;
+  const expectedSlots = daysCounted * 2;
+
+  monthlyStat.staff.textContent = String(staffRes.error ? monthlyRows.length : (staffRes.data || []).length);
+  monthlyStat.opening.textContent = String(totalOpening);
+  monthlyStat.closing.textContent = String(totalClosing);
+
+  if (expectedSlots > 0) {
+    const percent = Math.min(100, Math.round((coveredSlots.size / expectedSlots) * 100));
+    monthlyStat.percent.textContent = `${percent}%`;
+    monthlyStat.percentNote.textContent = `${coveredSlots.size} dari ${expectedSlots} sesi`;
+  } else {
+    monthlyStat.percent.textContent = "-";
+    monthlyStat.percentNote.textContent = "Bulan belum dimulai";
+  }
+
+  // ----- Tabel -----
+  if (monthlyRows.length === 0) {
+    monthlyShowMessage("Belum ada data checklist.");
+    return;
+  }
+
+  monthlyTableBody.innerHTML = monthlyRows.map((row) => {
+    const percentCell = row.total > 0
+      ? `<span class="monthly-percent">${Math.round((row.complete / row.total) * 100)}%</span>`
+      : "-";
+    const detailCell = row.total > 0
+      ? `<button type="button" class="monthly-detail-btn" data-key="${escapeHtml(row.key)}">Detail</button>`
+      : "-";
+    return `
+      <tr>
+        <td>${escapeHtml(row.name)}</td>
+        <td>${row.opening}</td>
+        <td>${row.closing}</td>
+        <td>${row.total}</td>
+        <td>${row.complete}</td>
+        <td>${percentCell}</td>
+        <td>${detailCell}</td>
+      </tr>`;
+  }).join("");
+}
+
+// ---------- DETAIL PER STAF ----------
+function monthlyFormatDate(tanggal) {
+  const d = new Date(`${tanggal}T00:00:00`);
+  return isNaN(d) ? String(tanggal ?? "-") : d.toLocaleDateString("id-ID", {
+    weekday: "short", day: "numeric", month: "short",
+  });
+}
+
+function monthlyOpenDetail(key) {
+  const row = monthlyRows.find((r) => r.key === key);
+  if (!row) return;
+
+  monthlyDetailTitle.textContent = row.name;
+  monthlyDetailSubtitle.textContent =
+    `${MONTH_NAMES[Number(monthlyMonthSelect.value)]} ${monthlyYearSelect.value} · ` +
+    `${row.total} checklist (${row.opening} opening, ${row.closing} closing)`;
+
+  const entries = [...row.entries].sort((a, b) =>
+    String(b.tanggal).localeCompare(String(a.tanggal)) ||
+    String(b.waktu_submit).localeCompare(String(a.waktu_submit)));
+
+  monthlyDetailBody.innerHTML = entries.map((e) => {
+    const jam = e.waktu_submit
+      ? new Date(e.waktu_submit).toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" })
+      : "-";
+    const foto = e.foto_url && /^https?:\/\//.test(e.foto_url)
+      ? `<a href="${escapeHtml(e.foto_url)}" target="_blank" rel="noopener">Lihat Foto</a>`
+      : "-";
+    return `
+      <tr>
+        <td>${escapeHtml(monthlyFormatDate(e.tanggal))}</td>
+        <td>${e.shift === "opening" ? "Opening" : "Closing"}</td>
+        <td>${jam}</td>
+        <td>${e.isComplete ? "✅ Lengkap" : "⚠️ Belum lengkap"}</td>
+        <td>${foto}</td>
+      </tr>`;
+  }).join("");
+
+  monthlyDetailModal.style.display = "flex";
+}
+
+function monthlyCloseDetail() {
+  monthlyDetailModal.style.display = "none";
+}
+
+monthlyTableBody.addEventListener("click", (event) => {
+  const btn = event.target.closest(".monthly-detail-btn");
+  if (btn) monthlyOpenDetail(btn.dataset.key);
+});
+document.getElementById("monthlyDetailClose").addEventListener("click", monthlyCloseDetail);
+monthlyDetailModal.addEventListener("click", (event) => {
+  if (event.target === monthlyDetailModal) monthlyCloseDetail(); // klik area gelap
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") monthlyCloseDetail();
+});
+
+// Muat begitu dashboard pertama kali dibuka
+loadDashboardSummary();
+
+// ========================================
+// NOTIFIKASI LONCENG
+// Muncul saat staff submit Opening / Closing
+// atau melaporkan Fasilitas / Kerusakan.
+// - Realtime Supabase (kalau diaktifkan) + cek ulang tiap 30 detik
+// - Status "sudah dibaca" disimpan di browser (localStorage)
+// ========================================
+const notifBellBtn = document.getElementById("notifBellBtn");
+const notifBadge = document.getElementById("notifBadge") || document.getElementById("notifBagde");
+const notifDropDown = document.getElementById("notifDropDown");
+const notifList = document.getElementById("notifList");
+const notifMarkAll = document.getElementById("notifikasiMarkAllRead");
+
+const NOTIF_STORAGE_KEY = `20fit_notif_${session.user.id}`;
+const NOTIF_POLL_MS = 10000;
+const NOTIF_LIMIT = 20;
+
+// Data per sumber, supaya kalau satu query gagal, yang lain tidak hilang
+const notifSource = { daily: [], damage: [] };
+const notifNewKeys = new Set(); // item yang muncul setelah dashboard dibuka
+const notifHighlight = new Set(); // item baru yang disorot selama dropdown terbuka
+let notifLastError = null;
+let notifFirstLoadDone = false;
+let notifFetching = false;
+let notifState = notifLoadState();
+
+function notifLoadState() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(NOTIF_STORAGE_KEY));
+    if (raw && Array.isArray(raw.readKeys)) {
+      const baselineAt = raw.baselineAt ?? raw.lastReadAt;
+      if (typeof baselineAt === "number") return { baselineAt, readKeys: raw.readKeys };
+    }
+  } catch (err) { /* abaikan */ }
+  // Pertama kali: notifikasi hari ini dianggap belum dibaca
+  const startOfToday = new Date();
+  startOfToday.setHours(0, 0, 0, 0);
+  return { baselineAt: startOfToday.getTime(), readKeys: [] };
+}
+
+function notifSaveState() {
+  try {
+    notifState.readKeys = notifState.readKeys.slice(-200);
+    localStorage.setItem(NOTIF_STORAGE_KEY, JSON.stringify(notifState));
+  } catch (err) { /* abaikan */ }
+}
+
+function notifAllItems() {
+  return [...notifSource.daily, ...notifSource.damage]
+    .sort((a, b) => b.time - a.time)
+    .slice(0, NOTIF_LIMIT);
+}
+
+// Belum dibaca = belum ditandai dibaca DAN (dibuat hari ini ATAU baru masuk saat dashboard terbuka).
+// Tidak bergantung pada selisih jam HP staff dengan komputer HRD.
+function notifIsUnread(item) {
+  if (notifState.readKeys.includes(item.key)) return false;
+  return item.time >= notifState.baselineAt || notifNewKeys.has(item.key);
+}
+
+// Dipanggil saat lonceng dibuka: badge dikosongkan, tapi item baru tetap
+// disorot selama dropdown masih terbuka supaya HRD tahu mana yang baru.
+function notifAbsorbUnread() {
+  const unreadKeys = notifAllItems().filter(notifIsUnread).map((item) => item.key);
+  if (unreadKeys.length === 0) return;
+  unreadKeys.forEach((key) => notifHighlight.add(key));
+  notifState.readKeys = [...new Set([...notifState.readKeys, ...unreadKeys])];
+  notifSaveState();
+}
+
+function notifIsOpen() {
+  return notifDropDown.style.display !== "none";
+}
+
+function notifTimeAgo(ms) {
+  const diff = Math.max(0, Date.now() - ms);
+  const minutes = Math.floor(diff / 60000);
+  if (minutes < 1) return "Baru saja";
+  if (minutes < 60) return `${minutes} menit lalu`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours} jam lalu`;
+  return `${Math.floor(hours / 24)} hari lalu`;
+}
+
+// ---------- AMBIL DATA ----------
+async function notifFetch() {
+  if (notifFetching) return;
+  notifFetching = true;
+
+  const previousKeys = new Set(notifAllItems().map((item) => item.key));
+
+  try {
+    const [daily, damage] = await Promise.all([
+      supabase
+        .from("daily_checklists")
+        .select("id, nama, shift, waktu_submit")
+        .order("waktu_submit", { ascending: false })
+        .limit(NOTIF_LIMIT),
+      supabase
+        .from("damage_reports")
+        .select("id, nama, fasilitas, area, created_at")
+        .order("created_at", { ascending: false })
+        .limit(NOTIF_LIMIT),
+    ]);
+
+    const errors = [];
+    if (daily.error) {
+      console.error("❌ Notifikasi (checklist):", daily.error);
+      errors.push(`checklist: ${daily.error.message}`);
+    } else {
+      notifSource.daily = (daily.data || []).map((row) => {
+        const isOpening = row.shift === "opening";
+        return {
+          key: `daily:${row.id}`,
+          type: isOpening ? "opening" : "closing",
+          label: isOpening ? "Opening" : "Closing",
+          title: `${row.nama || "Staff"} mengisi ${isOpening ? "Opening" : "Closing"} Checklist`,
+          desc: "Checklist kebersihan masuk",
+          time: new Date(row.waktu_submit).getTime(),
+        };
+      });
+    }
+
+    if (damage.error) {
+      console.error("❌ Notifikasi (kerusakan):", damage.error);
+      errors.push(`kerusakan: ${damage.error.message}`);
+    } else {
+      notifSource.damage = (damage.data || []).map((row) => ({
+        key: `damage:${row.id}`,
+        type: "damage",
+        label: "Kerusakan",
+        title: `${row.nama || "Staff"} melaporkan kerusakan`,
+        desc: [row.fasilitas, row.area].filter(Boolean).join(" · "),
+        time: new Date(row.created_at).getTime(),
+      }));
+    }
+    notifLastError = errors.length ? errors.join(" | ") : null;
+  } catch (err) {
+    console.error("❌ Notifikasi gagal dimuat:", err);
+    notifLastError = err.message || String(err);
+  } finally {
+    notifFetching = false;
+  }
+
+  // Ada item baru sejak pengecekan sebelumnya?
+  const newItems = notifFirstLoadDone
+    ? notifAllItems().filter((item) => !previousKeys.has(item.key))
+    : [];
+  newItems.forEach((item) => notifNewKeys.add(item.key));
+  const hasNew = newItems.length > 0;
+  notifFirstLoadDone = true;
+
+  if (notifIsOpen()) notifAbsorbUnread(); // sedang dilihat, tidak perlu menambah badge
+  notifRender();
+
+  if (hasNew) {
+    notifRing();
+    notifRefreshVisiblePage();
+  }
+}
+
+// Segarkan halaman yang sedang dibuka supaya angkanya ikut terbaru
+function notifRefreshVisiblePage() {
+  if (dailyPage && dailyPage.style.display === "block") {
+    loadDailyChecklist();
+  } else if (damagePage && damagePage.style.display === "block") {
+    loadDamageReports();
+  } else if (monthlyPage && monthlyPage.style.display === "block") {
+    loadMonthly();
+  } else if (dashboardSections[0] && dashboardSections[0].style.display !== "none") {
+    loadDashboardSummary();
+  }
+}
+
+// ---------- TAMPILAN ----------
+function notifRender() {
+  const items = notifAllItems();
+  const unread = items.filter(notifIsUnread).length;
+
+  if (unread > 0) {
+    notifBadge.textContent = unread > 99 ? "99+" : String(unread);
+    notifBadge.style.display = "flex";
+  } else {
+    notifBadge.style.display = "none";
+  }
+
+  const errorHtml = notifLastError
+    ? `<div class="notif-error">⚠️ Gagal memuat notifikasi (${escapeHtml(notifLastError)})</div>`
+    : "";
+
+  if (items.length === 0) {
+    notifList.innerHTML = errorHtml || `<div class="notif-empty">Belum ada notifikasi</div>`;
+    return;
+  }
+
+  notifList.innerHTML = errorHtml + items.map((item) => `
+    <button type="button" class="notif-item ${notifHighlight.has(item.key) ? "unread" : ""}"
+            data-key="${escapeHtml(item.key)}" data-type="${item.type}">
+      <span class="notif-dot"></span>
+      <span class="notif-content">
+        <span class="notif-title">${escapeHtml(item.title)}</span>
+        <span class="notif-desc">${escapeHtml(item.desc)}</span>
+        <span class="notif-meta">
+          <span class="notif-tag notif-tag-${item.type}">${item.label}</span>
+          <span>${notifTimeAgo(item.time)}</span>
+        </span>
+      </span>
+    </button>
+  `).join("");
+}
+
+function notifRing() {
+  notifBellBtn.classList.remove("ringing");
+  void notifBellBtn.offsetWidth; // restart animasi
+  notifBellBtn.classList.add("ringing");
+}
+
+function notifToggle(open) {
+  const show = open ?? !notifIsOpen();
+  notifDropDown.style.display = show ? "block" : "none";
+  if (show) {
+    notifAbsorbUnread(); // angka di lonceng kembali ke 0
+  } else {
+    notifHighlight.clear();
+  }
+  notifRender();
+}
+
+// ---------- INTERAKSI ----------
+notifBellBtn.addEventListener("click", (event) => {
+  event.stopPropagation();
+  notifToggle();
+});
+
+notifMarkAll.addEventListener("click", () => {
+  const keys = new Set([...notifState.readKeys, ...notifAllItems().map((item) => item.key)]);
+  notifState.readKeys = [...keys];
+  notifSaveState();
+  notifHighlight.clear();
+  notifRender();
+});
+
+notifList.addEventListener("click", (event) => {
+  const itemEl = event.target.closest(".notif-item");
+  if (!itemEl) return;
+
+  const { type } = itemEl.dataset;
+  notifToggle(false);
+
+  // Pindah ke halaman yang sesuai
+  if (type === "damage") {
+    showPage("damage", damageMenu);
+  } else {
+    const tab = document.querySelector(`.daily-tab[data-type="${type}"]`);
+    if (tab) tab.click();
+    showPage("daily", dailyMenu);
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (!notifDropDown.contains(event.target) && !notifBellBtn.contains(event.target)) {
+    notifToggle(false);
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") notifToggle(false);
+});
+
+// ---------- REALTIME + CADANGAN POLLING ----------
+try {
+  supabase
+    .channel("notif-hrd")
+    .on("postgres_changes", { event: "INSERT", schema: "public", table: "daily_checklists" }, notifFetch)
+    .on("postgres_changes", { event: "INSERT", schema: "public", table: "damage_reports" }, notifFetch)
+    .subscribe((status) => console.log("🔔 Realtime notifikasi:", status));
+} catch (err) {
+  console.warn("⚠️ Realtime tidak aktif, memakai pengecekan berkala:", err);
+}
+
+setInterval(notifFetch, NOTIF_POLL_MS);
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) notifFetch();
+});
+
+notifFetch();
+</script>
+<!-- MODAL KONFIRMASI HAPUS -->
+<div id="confirmModal" class="confirm-modal-overlay" style="display:none;">
+  <div class="confirm-modal">
+    <div class="confirm-modal-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3m2 0v13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7h12ZM10 11v6M14 11v6"/>
+      </svg>
+    </div>
+    <h3>Hapus Laporan?</h3>
+    <p>Apakah Anda yakin menghapus laporan ini? Tindakan ini tidak bisa dibatalkan.</p>
+    <div class="confirm-modal-actions">
+      <button type="button" id="confirmCancelBtn" class="btn-cancel">Tidak</button>
+      <button type="button" id="confirmYesBtn" class="btn-confirm-delete">Ya, Hapus</button>
+    </div>
+  </div>
+</div>
+<!-- MODAL DETAIL MONTHLY -->
+<div id="monthlyDetailModal" class="detail-modal-overlay" style="display:none;">
+  <div class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="monthlyDetailTitle">
+    <div class="detail-modal-header">
+      <div>
+        <h3 id="monthlyDetailTitle">Detail</h3>
+        <p id="monthlyDetailSubtitle"></p>
+      </div>
+      <button type="button" id="monthlyDetailClose" class="detail-modal-close" aria-label="Tutup">✕</button>
+    </div>
+    <div class="detail-modal-body">
+      <table class="monthly-table">
+        <thead>
+          <tr><th>Tanggal</th><th>Shift</th><th>Jam</th><th>Status</th><th>Foto</th></tr>
+        </thead>
+        <tbody id="monthlyDetailBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

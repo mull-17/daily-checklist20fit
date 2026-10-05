@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opening Checklist</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main class="dashboard-container">
+    <div class="dashboard-card checklist-card">
+      <h1>
+        <span><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M13 3a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V3ZM6.343 4.929A1 1 0 0 0 4.93 6.343l1.414 1.414a1 1 0 0 0 1.414-1.414L6.343 4.929Zm12.728 1.414a1 1 0 0 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-9 4a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H3Zm16 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM7.757 17.657a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414Zm9.9-1.414a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM13 19a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Z" clip-rule="evenodd"/>
+        </svg>
+        </span>
+      Opening</h1>
+      <p id="userName"></p>
+      <p>
+        Checklist kebersihan
+      </p>
+      <!-- CHECKLIST -->
+      <div class="checklist-list">
+        <label class="check-item">
+          <input type="checkbox" value="Sapu seluruh area gym">
+          <span>Sapu seluruh area gym</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Sapu seluruh area studio">
+          <span>Sapu seluruh area studio</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Sapu seluruh area lobby">
+          <span>Sapu seluruh area lobby</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Mop lantai gym & studio dengan disinfektan">
+          <span>Mop lantai gym & studio dengan disinfektan</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Bersihkan seluruh equipment dengan disinfektan ringan">
+          <span>Bersihkan seluruh equipment dengan disinfektan ringan</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Kosongkan seluruh tempat sampah">
+          <span>Kosongkan seluruh tempat sampah</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Pastikan toilet bersih sabun dan tisu tersedia">
+          <span>Pastikan toilet bersih sabun dan tisu tersedia</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Pastikan cermin studio dan gym bersih dari noda">
+          <span>Pastikan cermin studio dan gym bersih dari noda</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Pastikan area resepsionis siap menerima tamu">
+          <span>Pastikan area resepsionis siap menerima tamu</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Pastikan seluruh equipmnet dalam kondisi baik dan siap digunakan">
+          <span>Pastikan seluruh equipmnet dalam kondisi baik dan siap digunakan</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Pastikan dumbbell, kettlebell, plate, dan perlengkapan latihan tersusun rapi pada tempatnya">
+          <span>Pastikan dumbbell, kettlebell, plate, dan perlengkapan latihan tersusun rapi pada tempatnya</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Pastikan treadmill, bike, rowing machine dan mesin kardio lainnya bersih dan berfungsi normal">
+          <span>Pastikan treadmill, bike, rowing machine dan mesin kardio lainnya bersih dan berfungsi normal</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" value="Pastikan lantai tidak licin dan bebas potensi bahaya">
+          <span>Pastikan lantai tidak licin dan bebas potensi bahaya</span>
+        </label>
+      </div>
+      <!-- FOTO -->
+      <div class="photo-section">
+        <label for="photo">
+          📸 Upload Foto
+        </label>
+        <input
+          type="file"
+          id="photo"
+          accept="image/*"
+          capture="environment">
+      </div>
+      <!-- SUBMIT -->
+      <button
+        type="button"
+        id="submitButton"
+        class="btn">
+        Submit
+      </button>
+      <p id="message"></p>
+      <a href="home.html" class="back-link">
+        ← Kembali
+      </a>
+    </div>
+  </main>
+ <script type="module"> 
+import { supabase } from "./js/supabase.js";
+ 
+const userName = document.getElementById("userName");
+const dataText = document.getElementById("dataText");
+const submitButton = document.getElementById("submitButton");
+const photoInput = document.getElementById("photo");
+const message = document.getElementById("message");
+const SHIFT = "opening";
+ 
+// CEK SESSION
+const {
+  data: { session }
+} = await supabase.auth.getSession();
+ 
+if (!session) {
+  window.location.href = "index.html";
+}
+ 
+// Ambil PROFILE
+const {
+  data: profile,
+  error: profileError
+} = await supabase
+  .from("profiles")
+  .select("full_name, role")
+  .eq("id", session.user.id)
+  .single();
+ 
+if (profileError || !profile) {
+  message.textContent = "❌ Profile tidak ditemukan.";
+  throw new Error("Profile tidak ditemukan");
+}
+ 
+if (userName) userName.textContent = `Nama: ${profile.full_name}`;
+ 
+// ========================================
+// SUBMIT CHECKLIST
+// ========================================
+submitButton.addEventListener("click", async () => {
+  const now = new Date();
+  const todayISO = now.toISOString().split("T")[0];
+ 
+  const checkboxes = document.querySelectorAll(".check-item input");
+  const uncheckedCount = document.querySelectorAll(
+    ".check-item input:not(:checked)"
+  ).length;
+ 
+  // WAJIB SEMUA DICENTANG
+  if (uncheckedCount > 0) {
+    message.textContent =
+      "❌ Checklist belum lengkap. Centang semua item terlebih dahulu.";
+    return;
+  }
+ 
+  // CEK FOTO
+  const photo = photoInput.files[0];
+  if (!photo) {
+    message.textContent = "❌ Silakan upload 1 foto.";
+    return;
+  }
+ 
+  message.textContent = "Sedang mengirim...";
+  submitButton.disabled = true;
+ 
+  const areas = Array.from(checkboxes).map((checkbox) => ({
+    area: checkbox.value,
+    status: "sudah"
+  }));
+ 
+  try {
+    // UPLOAD FOTO KE STORAGE
+    const fileExt = photo.name.split(".").pop();
+    const filePath = `${session.user.id}/${Date.now()}.${fileExt}`;
+ 
+    const { error: uploadError } = await supabase.storage
+      .from("checklist-photos")
+      .upload(filePath, photo);
+ 
+    if (uploadError) {
+      throw uploadError;
+    }
+ 
+    const {
+      data: { publicUrl }
+    } = supabase.storage.from("checklist-photos").getPublicUrl(filePath);
+ 
+    // SIMPAN CHECKLIST UTAMA
+    const {
+      data: checklist,
+      error: checklistError
+    } = await supabase
+      .from("daily_checklists")
+      .insert({
+        user_id: session.user.id,
+        nama: profile.full_name,
+        tanggal: todayISO,
+        shift: SHIFT,
+        foto_url: publicUrl,
+        waktu_submit: now.toISOString()
+      })
+      .select()
+      .single();
+ 
+    if (checklistError) {
+      throw checklistError;
+    }
+ 
+    // SIMPAN DETAIL AREA
+    const items = areas.map((item) => ({
+      daily_checklist_id: checklist.id,
+      area: item.area,
+      status: item.status
+    }));
+ 
+    const { error: itemsError } = await supabase
+      .from("checklist_items")
+      .insert(items);
+ 
+    if (itemsError) {
+      throw itemsError;
+    }
+ 
+    message.textContent = "✅ Checklist berhasil dikirim!";
+  } catch (error) {
+    console.error(error);
+    message.textContent = "❌ Gagal mengirim checklist: " + error.message;
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

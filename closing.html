@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closing Checklist</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main class="dashboard-container">
+    <div class="dashboard-card checklist-card">
+      <h1>
+        <span><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M11.675 2.015a.998.998 0 0 0-.403.011C6.09 2.4 2 6.722 2 12c0 5.523 4.477 10 10 10 4.356 0 8.058-2.784 9.43-6.667a1 1 0 0 0-1.02-1.33c-.08.006-.105.005-.127.005h-.001l-.028-.002A5.227 5.227 0 0 0 20 14a8 8 0 0 1-8-8c0-.952.121-1.752.404-2.558a.996.996 0 0 0 .096-.428V3a1 1 0 0 0-.825-.985Z" clip-rule="evenodd"/>
+</svg>
+</span>Closing Checklist</h1>
+      <!-- CHECKLIST -->
+      <div class="checklist-list">
+        <label class="check-item">
+          <span>Pastikan seluruh member dan tamu telah meninggalkan area gym</span>
+          <input type="checkbox" value="Area belakang sudah bersih">
+        </label>
+        <label class="check-item">
+          <span>Rapikan seluruh equipment ke posisi penyimpanan yang telah ditentukan</span>
+          <input type="checkbox" value="Lantai sudah disapu dan dipel">
+        </label>
+        <label class="check-item">
+          <span>Bersihkan seluruh equipment yang telah digunakan</span>
+          <input type="checkbox" value="Meja dan peralatan sudah dibersihkan">
+        </label>
+        <label class="check-item">
+          <span>Bersihkan area gym, studio, lobby, dan resepsionis</span>
+          <input type="checkbox" value="Bersihkan area gym, studio, lobby, dan resepsionis">
+        </label>
+        <label class="check-item">
+          <span>Kosongkan seluruh tempat sampah dan buang ke area pembuangan yang telah ditentukan</span>
+          <input type="checkbox" value="Kosongkan seluruh tempat sampah dan buang ke area pembuangan yang telah ditentukan">
+        </label>
+        <label class="check-item">
+          <span>Pastikan toilet, locker dan area umum dalam kondisi bersih dan rapi</span>
+          <input type="checkbox" value="Pastikan toilet, locker dan area umum dalam kondisi bersih dan rapi">
+        </label>
+        <label class="check-item">
+          <span>Pastikan dispenser air, sabun cuci tangan dan tisu telah diisi ulang untuk operasional hari berikutnya</span>
+          <input type="checkbox" value="Pastikan dispenser air, sabun cuci tangan dan tisu telah diisi ulang untuk operasional hari berikutnya">
+        </label>
+        <label class="check-item">
+          <span>Matikan music, TV/display dan perangkat operasional yang tidak digunakan</span>
+          <input type="checkbox" value="Matikan music, TV/display dan perangkat operasional yang tidak digunakan">
+        </label>
+        <label class="check-item">
+          <span>Dokumentasikan kerusakan equipment atau temuan operasional yang memerlukan tindak lanjut</span>
+          <input type="checkbox" value="Dokumentasikan kerusakan equipment atau temuan operasional yang memerlukan tindak lanjut">
+        </label>
+        <label class="check-item">
+          <span>Catat kebutuhan maintenance atau pengadaan yang ditemukan selama operasional</span>
+          <input type="checkbox" value="Catat kebutuhan maintenance atau pengadaan yang ditemukan selama operasional">
+        </label>
+        <label class="check-item">
+          <span>Laporan kendala, insiden, atau keluhan member yang terjadi selama operasional kepada Supervisor</span>
+          <input type="checkbox" value="Laporan kendala, insiden, atau keluhan member yang terjadi selama operasional kepada Supervisor">
+        </label>
+        <label class="check-item">
+          <span>Pastikan area gym dalam kondisi siap untuk operasional hari berikutnya</span>
+          <input type="checkbox" value="Pastikan area gym dalam kondisi siap untuk operasional hari berikutnya">
+        </label>
+        <label class="check-item">
+          <span>Supervisor melakuan inspeksi akhir dan menyetujui penutupan operasional</span>
+          <input type="checkbox" value="Supervisor melakuan inspeksi akhir dan menyetujui penutupan operasional">
+        </label>
+      </div>
+      <!-- FOTO -->
+      <div class="photo-section">
+        <label for="photo">
+          📸 Upload foto
+        </label>
+        <input
+          type="file"
+          id="photo"
+          accept="image/*"
+          capture="environment">
+      </div>
+      <!-- SUBMIT -->
+      <button
+        type="button"
+        id="submitChecklist"
+        class="btn">
+        Submit
+      </button>
+      <p id="message"></p>
+      <a href="home.html" class="back-link">
+        ← Kembali
+      </a>
+    </div>
+  </main>
+  <script type="module">
+import { supabase } from "./js/supabase.js";
+ 
+const SHIFT = "closing";
+const submitButton = document.getElementById("submitChecklist");
+const message = document.getElementById("message");
+const photoInput = document.getElementById("photo");
+ 
+// ==============================
+// CEK LOGIN
+// ==============================
+const {
+  data: { session }
+} = await supabase.auth.getSession();
+ 
+if (!session) {
+  window.location.href = "index.html";
+}
+ 
+// ==============================
+// AMBIL PROFILE (buat nama)
+// ==============================
+const {
+  data: profile,
+  error: profileError
+} = await supabase
+  .from("profiles")
+  .select("full_name, role")
+  .eq("id", session.user.id)
+  .single();
+ 
+if (profileError || !profile) {
+  message.textContent = "❌ Profile tidak ditemukan.";
+  throw new Error("Profile tidak ditemukan");
+}
+ 
+// ==============================
+// SUBMIT
+// ==============================
+submitButton.addEventListener("click", async () => {
+  const now = new Date();
+  const todayISO = now.toISOString().split("T")[0];
+ 
+  const checkboxes = document.querySelectorAll(".check-item input");
+  const uncheckedCount = document.querySelectorAll(
+    ".check-item input:not(:checked)"
+  ).length;
+ 
+  // WAJIB SEMUA DICENTANG
+  if (uncheckedCount > 0) {
+    message.textContent =
+      "❌ Checklist belum lengkap. Centang semua item terlebih dahulu.";
+    return;
+  }
+ 
+  // CEK FOTO
+  const photo = photoInput.files[0];
+  if (!photo) {
+    message.textContent = "❌ Silakan upload foto bukti.";
+    return;
+  }
+ 
+  submitButton.disabled = true;
+  message.textContent = "⏳ Menyimpan checklist...";
+ 
+  const areas = Array.from(checkboxes).map((checkbox) => ({
+    area: checkbox.value,
+    status: "sudah"
+  }));
+ 
+  try {
+    // =========================
+    // UPLOAD FOTO KE STORAGE
+    // =========================
+    const fileExt = photo.name.split(".").pop();
+    const filePath = `${session.user.id}/${Date.now()}.${fileExt}`;
+ 
+    const { error: uploadError } = await supabase.storage
+      .from("checklist-photos")
+      .upload(filePath, photo);
+ 
+    if (uploadError) {
+      throw uploadError;
+    }
+ 
+    const {
+      data: { publicUrl }
+    } = supabase.storage.from("checklist-photos").getPublicUrl(filePath);
+ 
+    // ==================================
+    // SIMPAN CHECKLIST UTAMA
+    // ==================================
+    const {
+      data: checklist,
+      error: checklistError
+    } = await supabase
+      .from("daily_checklists")
+      .insert({
+        user_id: session.user.id,
+        nama: profile.full_name,
+        tanggal: todayISO,
+        shift: SHIFT,
+        foto_url: publicUrl,
+        waktu_submit: now.toISOString()
+      })
+      .select()
+      .single();
+ 
+    if (checklistError) {
+      throw checklistError;
+    }
+ 
+    // ==================================
+    // SIMPAN DETAIL AREA
+    // ==================================
+    const items = areas.map((item) => ({
+      daily_checklist_id: checklist.id,
+      area: item.area,
+      status: item.status
+    }));
+ 
+    const { error: itemsError } = await supabase
+      .from("checklist_items")
+      .insert(items);
+ 
+    if (itemsError) {
+      throw itemsError;
+    }
+ 
+    message.textContent = "✅ Checklist berhasil dikirim!";
+  } catch (error) {
+    console.error(error);
+    message.textContent = "❌ Gagal mengirim checklist: " + error.message;
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+  </script>
+</body>
+</html>
